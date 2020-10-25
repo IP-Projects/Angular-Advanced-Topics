@@ -10,9 +10,11 @@ Angular app meant as an exercise for advanced topics
 ```constructor(library: FaIconLibrary) {
     // Add an icon to the library for convenient access in other components
     // library.addIcons(faCoffee);
-    library.addIconPacks(fas, far);
+    library.addIconPacks(fas, far); // to add all of them
   }
 ```
+
+usage : `<fa-icon [icon]="['fas', 'save']"></fa-icon>`
 
 -   angular [JWT authentication](https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3) - `npm install --save @auth0/angular-jwt`
 -   create auth service
@@ -25,4 +27,35 @@ Angular app meant as an exercise for advanced topics
   'Authorization': `Bearer ${auth_token}`
 })
 return this.http.get(apiUrl, { headers: headers })
+```
+
+-   create resolvers for route requests
+
+```
+@Injectable()
+export class HomeResolve implements Resolve<Observable<any>> {
+  constructor(private service: HomeApiService) {}
+
+  resolve(): Observable<any> {
+    return this.service.getHomeData();
+  }
+}
+
+```
+
+usage: in component
+
+```
+constructor(private activatedRoute: ActivatedRoute) {
+    const { data } = this.activatedRoute.snapshot.data;
+  }
+
+```
+
+usage on route:
+
+```
+const routes: Routes = [
+  { path: '', component: HomeComponent, resolve: { data: HomeResolve } },
+];
 ```
