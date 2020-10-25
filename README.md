@@ -17,3 +17,4 @@ Angular app meant as an exercise for advanced topics
 -   angular [JWT authentication](https://medium.com/@ryanchenkie_40935/angular-authentication-using-route-guards-bf7a4ca13ae3) - `npm install --save @auth0/angular-jwt`
 -   create auth service
 -   create login guard
+-   create login component - import reactive forms module

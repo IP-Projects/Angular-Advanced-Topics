@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="w-100 h-100 d-flex justify-content-center align-items-center">
+  <div class="card col-12 col-md-3">
+    <div class="card-body m-2">
+      <form [formGroup]="formGroup" (submit)="login()">
+        <h5 class="card-title">Login</h5>
+        <input
+          class="form-control"
+          type="text"
+          formControlName="username"
+          placeholder="Username"
+        />
+        <input
+          class="form-control"
+          type="text"
+          formControlName="password"
+          placeholder="Password"
+        />
+        <div class="d-flex flex-row-reverse mt-1">
+          <button
+            class="btn btn-primary btn-sm ml-half"
+            type="submit"
+            [disabled]="formGroup.invalid || formGroup.pristine"
+          >
+            <fa-icon [icon]="['fas', 'save']" class="mr-1"></fa-icon>
+            <span>Login</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
