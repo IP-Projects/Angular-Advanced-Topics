@@ -18,3 +18,11 @@ Angular app meant as an exercise for advanced topics
 -   create auth service
 -   create login guard
 -   create login component - import reactive forms module
+-   create interceptor to add token to all requests (optional, alternative is to add headers for all) -
+
+```const headers = new Headers({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${auth_token}`
+})
+return this.http.get(apiUrl, { headers: headers })
+```
