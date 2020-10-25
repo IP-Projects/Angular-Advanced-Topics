@@ -11,7 +11,7 @@
         />
         <input
           class="form-control"
-          type="text"
+          type="password"
           formControlName="password"
           placeholder="Password"
         />
@@ -23,6 +23,15 @@
           >
             <fa-icon [icon]="['fas', 'save']" class="mr-1"></fa-icon>
             <span>Login</span>
+          </button>
+          <button
+            class="btn btn-primary btn-sm ml-half"
+            (click)="register()"
+            type="button"
+            [disabled]="formGroup.invalid || formGroup.pristine"
+          >
+            <fa-icon [icon]="['fas', 'save']" class="mr-1"></fa-icon>
+            <span>Register</span>
           </button>
         </div>
       </form>

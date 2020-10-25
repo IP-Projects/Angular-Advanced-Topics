@@ -32,13 +32,26 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.destroy$.next(true);
     this.destroy$.unsubscribe();
   }
+  register(): void {
+    if (this.formGroup.valid) {
+      const form = this.formGroup.getRawValue();
+      this.loginService
+        .register(form.username, form.password)
+        .pipe(takeUntil(this.destroy$)) // .pipe(first())
+        .subscribe((response) => {
+          if (response) {
+            this.router.navigate(['home']);
+          }
+        });
+    }
+  }
 
   login(): void {
     if (this.formGroup.valid) {
       const form = this.formGroup.getRawValue();
       this.loginService
         .login(form.username, form.password)
-        .pipe(takeUntil(this.destroy$))
+        .pipe(takeUntil(this.destroy$)) // .pipe(first())
         .subscribe((response) => {
           if (response) {
             this.router.navigate(['home']);

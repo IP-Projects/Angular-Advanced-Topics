@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
@@ -10,8 +11,13 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [],
-  imports: [CommonModule, FontAwesomeModule, ReactiveFormsModule],
-  exports: [FontAwesomeModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    FontAwesomeModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
+  exports: [FontAwesomeModule, ReactiveFormsModule, HttpClientModule],
 })
 export class SharedModule {
   constructor(library: FaIconLibrary) {
