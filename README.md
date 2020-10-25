@@ -59,3 +59,36 @@ const routes: Routes = [
   { path: '', component: HomeComponent, resolve: { data: HomeResolve } },
 ];
 ```
+
+-   inputs `@Input() list: Array<any> = new Array();` usage `<app [list]="someListInClass"></app>`
+-   outputs `@Output() add: EventEmitter<any> = new EventEmitter();` usage `<app (add)="someFunctionInClass($event)"></app>` `this.add.emit(obj);`
+
+other snippets
+
+```
+  get formControlArray() {
+    return this.formGroup.get('arr') as FormArray;
+  }
+
+  get formControl() {
+    return this.formGroup.get('controlName');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+        const currentUsers = changes.users && changes.users.currentValue;
+
+        if (currentUsers) {
+            this.users = currentUsers;
+            this.initializeFormGroup(this.users);
+        }
+    }
+
+  // resolve with parameters
+    resolve(activatedRoute: ActivatedRouteSnapshot): Observable<GroupDetail> {
+        const { params } = activatedRoute;
+        return this.service.get(params.id);
+    }
+
+
+
+```

@@ -22,6 +22,11 @@ export class HomeApiService {
       .get<any>(`${environment.apiUrl}/api/unknown`, {
         headers: this.headers,
       })
-      .pipe(map((x) => x.data));
+      .pipe(
+        map((x) => {
+          console.log(x.data);
+          return x.data;
+        })
+      );
   }
 }
